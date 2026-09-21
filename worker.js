@@ -338,6 +338,7 @@ export default {
                 if (verify.success) {
                     resultMgs = "<h2 style=' color: #28a745;'>✅" + "پرداخت با موفقیت انجام شد" + "</h2>";
                     await env.DB.prepare(`UPDATE orders set paid = ? , status = ? where id = ?`).bind(1, 1, order.id).run();
+                    await sendMessage(order.user_id, "✅ "+"پرداخت با موفقت انجام شد \n با تشکر");
                 } else {
                     resultMgs = "<h2 style=' color: #ad0a0aff;'>❌" + "خطا در پرداخت" + "</h2>";
                 }
